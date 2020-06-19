@@ -1,1 +1,15 @@
-
+node{
+stage('SCM Checkout'){
+git 'https://github.com/mamatha-eng/sampleCPP'
+}
+/*stage('Compile-package'){
+def mvnhome= tool name: 'maven-3', type: 'maven'
+bat "${mvnHome}/bin/mvn package" 
+}
+}*/
+stage('Compile-package'){
+def gradle_version = 'GRADLE_HOME'
+withEnv( ["PATH+GRADLE_HOME=${tool gradle_version}/bin"] ) {
+  bat "mvn -Dmaven.test.failure.ignore=true clean package"
+ }
+}
