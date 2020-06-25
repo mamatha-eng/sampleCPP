@@ -11,7 +11,4 @@ withEnv( ["PATH+GRADLE_HOME=${tool gradle_version}/bin"] ) {
   }
  }
 }
-Stage('Deploy'){
-}
-
 }
